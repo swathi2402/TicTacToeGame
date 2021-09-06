@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class TicTacToeGame {
 
-
 	private static char[] startGame() {
 		char[] ticTacBoard = new char[10];
 		for (int index = 0; index < ticTacBoard.length; index++) {
@@ -23,11 +22,11 @@ public class TicTacToeGame {
 
 	private static void showBoard(char[] board) {
 		System.out.println("Board");
-		for (int index = 1; index <= 3; index++ ) {
-			for(int j = 1; j <= 3; j++) {
-				System.out.print(board[index] + " | ");
+		for (int index = 1; index < 10; index++) {
+			System.out.print(board[index] + " | ");
+			if (index % 3 == 0) {
+				System.out.println();
 			}
-			System.out.println();
 		}
 	}
 
@@ -39,6 +38,5 @@ public class TicTacToeGame {
 		char computerSymbol = (playerSymbol == 'X') ? 'O' : 'X';
 		showBoard(board);
 	}
-
 
 }
