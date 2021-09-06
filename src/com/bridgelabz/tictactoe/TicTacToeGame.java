@@ -26,12 +26,29 @@ public class TicTacToeGame {
 	private static void move() {
 		System.out.println("Enter the position 1 to 9 to move");
 		int playerPosition = scanner.nextInt();
-		int computerPosition = new Random().nextInt(9 - 1 + 1) + 1;
-		board[playerPosition] = playerSymbol;	
-		board[computerPosition] = computerSymbol;
-		showBoard(board);
+		if (playerPosition > 0 && playerPosition < 10) {
+			if (board[playerPosition] == ' ') {
+				board[playerPosition] = playerSymbol;
+			} else {
+				System.out.println("Position already occupied");
+				move();
+			}
+			computerMove();
+			showBoard(board);
+		} else {
+			System.out.println("Invalid Position");			
+		}
 	}
-		
+
+	private static void computerMove() {
+		int computerPosition = new Random().nextInt(9) + 1;
+		if (board[computerPosition] == ' ') {
+			board[computerPosition] = computerSymbol;
+		} else {
+			computerPosition = new Random().nextInt(9) + 1;
+		}
+	}
+
 	private static void showBoard(char[] board) {
 		System.out.println("Board: ");
 		for (int index = 1; index < 10; index++) {
