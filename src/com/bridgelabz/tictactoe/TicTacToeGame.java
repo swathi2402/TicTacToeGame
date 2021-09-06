@@ -12,20 +12,20 @@ public class TicTacToeGame {
 		return ticTacBoard;
 	}
 
-	private static String getInput() {
+	private static char getInput() {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Enter charecter 'X' or 'O'");
-		String sign = scanner.nextLine();
+		char playerSymbol = scanner.next().toUpperCase().charAt(0);
 		scanner.close();
-		return sign;
+		return playerSymbol;
 	}
 
 	public static void main(String[] args) {
 		System.out.println("*** Welcome to Tic Tac Toe Game ***");
 
 		char[] board = startGame();
-		String inputSign = getInput();
+		char playerSymbol = getInput();
+		char computerSymbol = (playerSymbol == 'X') ? 'O' : 'X';
 	}
-
 
 }
