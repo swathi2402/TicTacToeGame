@@ -37,16 +37,63 @@ public class TicTacToeGame {
 		} else {
 			System.out.println("Invalid Position");
 		}
+		
+		if (findWinner(playerSymbol)) {
+			System.out.println("You won the game");
+		}
 	}
 
 	private static void computerMove() {
-		int computerPosition = new Random().nextInt(9) + 1;
-		if (board[computerPosition] == ' ') {
-			board[computerPosition] = computerSymbol;
-		} else {
-			computerPosition = new Random().nextInt(9) + 1;
+		if (isTie()) {
+			int computerPosition = new Random().nextInt(9) + 1;
+			if (board[computerPosition] == ' ') {
+				board[computerPosition] = computerSymbol;
+			} else {
+				computerMove();
+			}
+			showBoard(board);
+			if (findWinner(computerSymbol)) {
+				System.out.println("Computer won the game");
+			}
+
 		}
-		showBoard(board);
+	}
+
+	private static boolean findWinner(char symbol) {
+		if (board[1] == symbol && board[5] == symbol && board[9] == symbol) {
+			return true;
+		}
+
+		if (board[3] == symbol && board[5] == symbol && board[7] == symbol) {
+			return true;
+		}
+
+		for (int index = 1; index < 4; index++) {
+			if (board[index] == symbol && board[index + 3] == symbol && board[index + 6] == symbol)
+				return true;
+		}
+
+		for (int index = 1; index < 10;) {
+			if (board[index] != symbol) {
+				index += 3;
+				break;
+			}
+			if (index % 3 == 0)
+				return true;
+
+			index += 1;
+		}
+
+		return false;
+	}
+
+	private static boolean isTie() {
+		for (int index = 1; index < board.length; index++) {
+			if (board[index] == ' ') {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	private static void showBoard(char[] board) {
@@ -63,8 +110,23 @@ public class TicTacToeGame {
 		if (Math.random() > 0.5) {
 			playerSymbol = getInput();
 			computerSymbol = (playerSymbol == 'X') ? 'O' : 'X';
-			move();
-			computerMove();
+
+			while (!findWinner(playerSymbol) && isTie()) {
+				if (!findWinner(computerSymbol) && isTie()) {
+					move();
+					computerMove();
+				} else {
+					System.out.println("Match tie as there is no more move");
+				}
+			}
+			if (findWinner(computerSymbol)) {
+				System.out.println("Computer won the game");
+			}
+
+			if (findWinner(playerSymbol)) {
+				System.out.println("You won the game");
+			}
+
 		} else {
 			if (Math.random() > 0.5) {
 				computerSymbol = 'X';
@@ -73,9 +135,23 @@ public class TicTacToeGame {
 				computerSymbol = 'O';
 				playerSymbol = 'X';
 			}
+
 			System.out.println("Computer chooses to play first with symbol " + computerSymbol);
-			computerMove();
-			move();
+			while (!findWinner(playerSymbol) && isTie()) {
+				if (!findWinner(computerSymbol) && isTie()) {
+					computerMove();
+					move();
+				} else {
+					System.out.println("Match tie as there is no more move");
+				}
+			}
+			if (findWinner(computerSymbol)) {
+				System.out.println("Computer won the game");
+			}
+
+			if (findWinner(playerSymbol)) {
+				System.out.println("You won the game");
+			}
 		}
 	}
 
