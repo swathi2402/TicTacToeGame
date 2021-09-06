@@ -41,16 +41,10 @@ public class TicTacToeGame {
 
 		if (findWinner(playerSymbol)) {
 			System.out.println("You won the game");
-			System.out.println("\nNew game starts...\n");
-			board = startGame();
-			randomStart();
 		}
 
 		if (!isTie()) {
 			System.out.println("There is no more move");
-			System.out.println("\nNew game starts...\n");
-			board = startGame();
-			randomStart();
 		}
 	}
 
@@ -66,17 +60,11 @@ public class TicTacToeGame {
 			showBoard(board);
 
 			if (findWinner(computerSymbol)) {
-				System.out.println("Computer won the game");
-				System.out.println("\nNew game starts...\n");
-				board = startGame();
-				randomStart();
+				System.out.println("Computer won the game");			
 			}
 
 			if (!isTie()) {
 				System.out.println("There is no more move");
-				System.out.println("\nNew game starts...\n");
-				board = startGame();
-				randomStart();
 			}
 
 		}
