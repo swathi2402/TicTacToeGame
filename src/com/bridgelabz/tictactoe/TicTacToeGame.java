@@ -59,10 +59,7 @@ public class TicTacToeGame {
 		}
 	}
 
-	public static void main(String[] args) {
-		System.out.println("*** Welcome to Tic Tac Toe Game ***");
-
-		board = startGame();
+	private static void randomStart() {
 		if (Math.random() > 0.5) {
 			playerSymbol = getInput();
 			computerSymbol = (playerSymbol == 'X') ? 'O' : 'X';
@@ -80,5 +77,12 @@ public class TicTacToeGame {
 			computerMove();
 			move();
 		}
+	}
+
+	public static void main(String[] args) {
+		System.out.println("*** Welcome to Tic Tac Toe Game ***");
+
+		board = startGame();
+		randomStart();
 	}
 }
