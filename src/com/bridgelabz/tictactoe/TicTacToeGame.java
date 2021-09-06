@@ -41,6 +41,11 @@ public class TicTacToeGame {
 		if (findWinner(playerSymbol)) {
 			System.out.println("You won the game");
 		}
+		
+		if(!isTie()) {
+			System.out.println("There is no more move");
+			return;
+		}
 	}
 
 	private static void computerMove() {
@@ -51,9 +56,16 @@ public class TicTacToeGame {
 			} else {
 				computerMove();
 			}
+			
 			showBoard(board);
+			
 			if (findWinner(computerSymbol)) {
 				System.out.println("Computer won the game");
+			}
+			
+			if(!isTie()) {
+				System.out.println("There is no more move");
+				return;
 			}
 
 		}
@@ -115,9 +127,7 @@ public class TicTacToeGame {
 				if (!findWinner(computerSymbol) && isTie()) {
 					move();
 					computerMove();
-				} else {
-					System.out.println("Match tie as there is no more move");
-				}
+				} 
 			}
 			if (findWinner(computerSymbol)) {
 				System.out.println("Computer won the game");
@@ -127,6 +137,10 @@ public class TicTacToeGame {
 				System.out.println("You won the game");
 			}
 
+			if(!isTie()) {
+				System.out.println("There is no more move");
+			}
+			
 		} else {
 			if (Math.random() > 0.5) {
 				computerSymbol = 'X';
@@ -141,10 +155,9 @@ public class TicTacToeGame {
 				if (!findWinner(computerSymbol) && isTie()) {
 					computerMove();
 					move();
-				} else {
-					System.out.println("Match tie as there is no more move");
-				}
+				} 
 			}
+			
 			if (findWinner(computerSymbol)) {
 				System.out.println("Computer won the game");
 			}
@@ -152,6 +165,11 @@ public class TicTacToeGame {
 			if (findWinner(playerSymbol)) {
 				System.out.println("You won the game");
 			}
+			
+			if(!isTie()) {
+				System.out.println("There is no more move");
+			}
+			
 		}
 	}
 
