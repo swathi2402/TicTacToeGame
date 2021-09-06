@@ -33,10 +33,9 @@ public class TicTacToeGame {
 				System.out.println("Position already occupied");
 				move();
 			}
-			computerMove();
 			showBoard(board);
 		} else {
-			System.out.println("Invalid Position");			
+			System.out.println("Invalid Position");
 		}
 	}
 
@@ -47,10 +46,11 @@ public class TicTacToeGame {
 		} else {
 			computerPosition = new Random().nextInt(9) + 1;
 		}
+		showBoard(board);
 	}
 
 	private static void showBoard(char[] board) {
-		System.out.println("Board: ");
+		System.out.println("Current state of board: ");
 		for (int index = 1; index < 10; index++) {
 			System.out.print(board[index] + " | ");
 			if (index % 3 == 0) {
@@ -63,8 +63,22 @@ public class TicTacToeGame {
 		System.out.println("*** Welcome to Tic Tac Toe Game ***");
 
 		board = startGame();
-		playerSymbol = getInput();
-		computerSymbol = (playerSymbol == 'X') ? 'O' : 'X';
-		move();
+		if (Math.random() > 0.5) {
+			playerSymbol = getInput();
+			computerSymbol = (playerSymbol == 'X') ? 'O' : 'X';
+			move();
+			computerMove();
+		} else {
+			if (Math.random() > 0.5) {
+				computerSymbol = 'X';
+				playerSymbol = 'O';
+			} else {
+				computerSymbol = 'O';
+				playerSymbol = 'X';
+			}
+			System.out.println("Computer chooses to play first with symbol " + computerSymbol);
+			computerMove();
+			move();
+		}
 	}
 }
