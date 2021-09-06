@@ -33,18 +33,24 @@ public class TicTacToeGame {
 				System.out.println("Position already occupied");
 				move();
 			}
-			showBoard(board);
+
 		} else {
 			System.out.println("Invalid Position");
 		}
-		
+		showBoard(board);
+
 		if (findWinner(playerSymbol)) {
 			System.out.println("You won the game");
+			System.out.println("\nNew game starts...\n");
+			board = startGame();
+			randomStart();
 		}
-		
-		if(!isTie()) {
+
+		if (!isTie()) {
 			System.out.println("There is no more move");
-			return;
+			System.out.println("\nNew game starts...\n");
+			board = startGame();
+			randomStart();
 		}
 	}
 
@@ -56,16 +62,21 @@ public class TicTacToeGame {
 			} else {
 				computerMove();
 			}
-			
+
 			showBoard(board);
-			
+
 			if (findWinner(computerSymbol)) {
 				System.out.println("Computer won the game");
+				System.out.println("\nNew game starts...\n");
+				board = startGame();
+				randomStart();
 			}
-			
-			if(!isTie()) {
+
+			if (!isTie()) {
 				System.out.println("There is no more move");
-				return;
+				System.out.println("\nNew game starts...\n");
+				board = startGame();
+				randomStart();
 			}
 
 		}
@@ -127,20 +138,9 @@ public class TicTacToeGame {
 				if (!findWinner(computerSymbol) && isTie()) {
 					move();
 					computerMove();
-				} 
-			}
-			if (findWinner(computerSymbol)) {
-				System.out.println("Computer won the game");
+				}
 			}
 
-			if (findWinner(playerSymbol)) {
-				System.out.println("You won the game");
-			}
-
-			if(!isTie()) {
-				System.out.println("There is no more move");
-			}
-			
 		} else {
 			if (Math.random() > 0.5) {
 				computerSymbol = 'X';
@@ -155,22 +155,11 @@ public class TicTacToeGame {
 				if (!findWinner(computerSymbol) && isTie()) {
 					computerMove();
 					move();
-				} 
-			}
-			
-			if (findWinner(computerSymbol)) {
-				System.out.println("Computer won the game");
+				}
 			}
 
-			if (findWinner(playerSymbol)) {
-				System.out.println("You won the game");
-			}
-			
-			if(!isTie()) {
-				System.out.println("There is no more move");
-			}
-			
 		}
+
 	}
 
 	public static void main(String[] args) {
