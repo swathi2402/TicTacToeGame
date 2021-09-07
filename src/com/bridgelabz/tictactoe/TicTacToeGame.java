@@ -50,17 +50,33 @@ public class TicTacToeGame {
 
 	private static void computerMove() {
 		if (isTie()) {
-			int computerPosition = new Random().nextInt(9) + 1;
-			if (board[computerPosition] == ' ') {
-				board[computerPosition] = computerSymbol;
-			} else {
-				computerMove();
+			boolean turnOfCorner = true;
+			if (turnOfCorner) {
+				if (board[1] == ' ') {
+					board[1] = computerSymbol;
+				} else if (board[3] == ' ') {
+					board[3] = computerSymbol;
+				} else if (board[7] == ' ') {
+					board[7] = computerSymbol;
+				} else if (board[9] == ' ') {
+					board[9] = computerSymbol;
+				} else
+					turnOfCorner = false;
 			}
 
+			if (!turnOfCorner) {
+
+				int computerPosition = new Random().nextInt(9) + 1;
+				if (board[computerPosition] == ' ') {
+					board[computerPosition] = computerSymbol;
+				} else {
+					computerMove();
+				}
+			}
 			showBoard(board);
 
 			if (findWinner(computerSymbol)) {
-				System.out.println("Computer won the game");			
+				System.out.println("Computer won the game");
 			}
 
 			if (!isTie()) {
