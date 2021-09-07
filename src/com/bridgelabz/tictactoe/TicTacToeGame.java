@@ -61,8 +61,8 @@ public class TicTacToeGame {
 	private static void computerMove() {
 		if (isTie()) {
 			int turnOfCorner = 0;
+			int combinationOfThreeItems[][] = { { 0, 1, 2 }, { 1, 0, 2 }, { 1, 2, 0 } };
 			if (turnOfCorner == 0) {
-				int combinationOfThreeItems[][] = { { 0, 1, 2 }, { 1, 0, 2 }, { 1, 2, 0 } };
 				for (int state = 0; state < winningStates.length; state++) {
 					for (int nthCombination = 0; nthCombination < combinationOfThreeItems.length; nthCombination++) {
 
@@ -77,8 +77,24 @@ public class TicTacToeGame {
 					}
 				}
 			}
-
+			
 			if (turnOfCorner == 1) {
+				for (int state = 0; state < winningStates.length; state++) {
+					for (int nthCombination = 0; nthCombination < combinationOfThreeItems.length; nthCombination++) {
+
+						if (board[winningStates[state][combinationOfThreeItems[nthCombination][0]]] == playerSymbol
+								&& board[winningStates[state][combinationOfThreeItems[nthCombination][1]]] == playerSymbol
+								&& board[winningStates[state][combinationOfThreeItems[nthCombination][2]]] == ' ') {
+
+							board[winningStates[state][combinationOfThreeItems[nthCombination][2]]] = computerSymbol;
+							break;
+						} else
+							turnOfCorner = 2;
+					}
+				}
+			}
+
+			if (turnOfCorner == 2) {
 
 				int computerPosition = new Random().nextInt(9) + 1;
 				if (board[computerPosition] == ' ') {
