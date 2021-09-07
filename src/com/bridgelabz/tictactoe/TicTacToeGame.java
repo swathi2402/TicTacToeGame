@@ -9,6 +9,8 @@ public class TicTacToeGame {
 	static char[] board;
 	static char playerSymbol;
 	static char computerSymbol;
+	static int winningStates[][] = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 }, { 1, 4, 7 }, { 2, 5, 8 }, { 3, 6, 9 },
+			{ 1, 5, 9 }, { 3, 5, 7 } };
 
 	private static char[] startGame() {
 		char[] ticTacBoard = new char[10];
@@ -40,46 +42,55 @@ public class TicTacToeGame {
 		showBoard(board);
 
 		if (findWinner(playerSymbol)) {
-			System.out.println("You won the game");
-			System.out.println("\nNew game starts...\n");
-			board = startGame();
-			randomStart();
+			System.out.println("You won the game");			
 		}
 
 		if (!isTie()) {
-			System.out.println("There is no more move");
-			System.out.println("\nNew game starts...\n");
-			board = startGame();
-			randomStart();
+			System.out.println("There is no more move");	
 		}
 	}
 
 	private static void computerMove() {
 		if (isTie()) {
-			int computerPosition = new Random().nextInt(9) + 1;
-			if (board[computerPosition] == ' ') {
-				board[computerPosition] = computerSymbol;
-			} else {
-				computerMove();
+			int turnOfCorner = 0;
+			if (turnOfCorner == 0) {
+				int combinationOfThreeItems[][] = { { 0, 1, 2 }, { 1, 0, 2 }, { 1, 2, 0 } };
+				for (int state = 0; state < winningStates.length; state++) {
+					for (int nthCombination = 0; nthCombination < combinationOfThreeItems.length; nthCombination++) {
+
+						if (board[winningStates[state][combinationOfThreeItems[nthCombination][0]]] == computerSymbol
+								&& board[winningStates[state][combinationOfThreeItems[nthCombination][1]]] == computerSymbol
+								&& board[winningStates[state][combinationOfThreeItems[nthCombination][2]]] == ' ') {
+
+							board[winningStates[state][combinationOfThreeItems[nthCombination][2]]] = computerSymbol;
+							break;
+						} else
+							turnOfCorner = 1;
+					}
+				}
 			}
 
+			if (turnOfCorner == 1) {
+
+				int computerPosition = new Random().nextInt(9) + 1;
+				if (board[computerPosition] == ' ') {
+					board[computerPosition] = computerSymbol;
+				} else {
+					computerMove();
+				}
+			}
 			showBoard(board);
 
 			if (findWinner(computerSymbol)) {
 				System.out.println("Computer won the game");
-				System.out.println("\nNew game starts...\n");
-				board = startGame();
-				randomStart();
 			}
 
 			if (!isTie()) {
 				System.out.println("There is no more move");
-				System.out.println("\nNew game starts...\n");
-				board = startGame();
-				randomStart();
 			}
 
 		}
+
 	}
 
 	private static boolean findWinner(char symbol) {
