@@ -50,8 +50,8 @@ public class TicTacToeGame {
 
 	private static void computerMove() {
 		if (isTie()) {
-			boolean turnOfCorner = true;
-			if (turnOfCorner) {
+			int turnOfCorner = 0;
+			if (turnOfCorner == 0) {
 				if (board[1] == ' ') {
 					board[1] = computerSymbol;
 				} else if (board[3] == ' ') {
@@ -61,10 +61,17 @@ public class TicTacToeGame {
 				} else if (board[9] == ' ') {
 					board[9] = computerSymbol;
 				} else
-					turnOfCorner = false;
+					turnOfCorner = 1;
 			}
 
-			if (!turnOfCorner) {
+			if (turnOfCorner == 1) {
+				if (board[5] == ' ') {
+					board[5] = computerSymbol;
+				} else
+					turnOfCorner = 2;
+			}
+
+			if (turnOfCorner == 2) {
 
 				int computerPosition = new Random().nextInt(9) + 1;
 				if (board[computerPosition] == ' ') {
