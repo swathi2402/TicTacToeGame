@@ -12,9 +12,12 @@ public class TicTacToeGame {
 	static int winningStates[][] = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 }, { 1, 4, 7 }, { 2, 5, 8 }, { 3, 6, 9 },
 			{ 1, 5, 9 }, { 3, 5, 7 } };
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> tic_tac_toe_game_uc10
+=======
+>>>>>>> tic_tac_toe_game_uc11
 
 	private static char[] startGame() {
 		char[] ticTacBoard = new char[10];
@@ -64,11 +67,16 @@ public class TicTacToeGame {
 
 	private static void computerMove() {
 		if (isTie()) {
+<<<<<<< HEAD
 			int turnOfCorner = 0;
 <<<<<<< HEAD
 =======
 			
 >>>>>>> tic_tac_toe_game_uc10
+=======
+int turnOfCorner = 0;
+			
+>>>>>>> tic_tac_toe_game_uc11
 			int combinationOfThreeItems[][] = { { 0, 1, 2 }, { 1, 0, 2 }, { 1, 2, 0 } };
 			if (turnOfCorner == 0) {
 				for (int state = 0; state < winningStates.length; state++) {
@@ -113,12 +121,25 @@ public class TicTacToeGame {
 					board[9] = computerSymbol;
 				} else
 					turnOfCorner = 3;
+<<<<<<< HEAD
 			}
 
 			if (turnOfCorner == 3) {
 
 <<<<<<< HEAD
 			if (turnOfCorner == 2) {
+=======
+			}
+
+			if (turnOfCorner == 3) {
+				if (board[5] == ' ') {
+					board[5] = computerSymbol;
+				} else
+					turnOfCorner = 4;
+			}
+
+			if (turnOfCorner == 4) {
+>>>>>>> tic_tac_toe_game_uc11
 
 =======
 >>>>>>> tic_tac_toe_game_uc10
