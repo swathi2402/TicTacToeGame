@@ -43,22 +43,23 @@ public class TicTacToeGame {
 
 		if (findWinner(playerSymbol)) {
 			System.out.println("You won the game");
+			System.out.println("\nNew game starts...\n");
+			board = startGame();
+			randomStart();
 		}
 
 		if (!isTie()) {
 			System.out.println("There is no more move");
+			System.out.println("\nNew game starts...\n");
+			board = startGame();
+			randomStart();
 		}
 	}
 
 	private static void computerMove() {
 		if (isTie()) {
-<<<<<<< HEAD
-int turnOfCorner = 0;
-			
-=======
 			int turnOfCorner = 0;
 
->>>>>>> tic_tac_toe_game_uc13
 			int combinationOfThreeItems[][] = { { 0, 1, 2 }, { 1, 0, 2 }, { 1, 2, 0 } };
 			if (turnOfCorner == 0) {
 				for (int state = 0; state < winningStates.length; state++) {
@@ -75,11 +76,7 @@ int turnOfCorner = 0;
 					}
 				}
 			}
-<<<<<<< HEAD
-			
-=======
 
->>>>>>> tic_tac_toe_game_uc13
 			if (turnOfCorner == 1) {
 				for (int state = 0; state < winningStates.length; state++) {
 					for (int nthCombination = 0; nthCombination < combinationOfThreeItems.length; nthCombination++) {
@@ -95,11 +92,7 @@ int turnOfCorner = 0;
 					}
 				}
 			}
-<<<<<<< HEAD
-			
-=======
 
->>>>>>> tic_tac_toe_game_uc13
 			if (turnOfCorner == 2) {
 				if (board[1] == ' ') {
 					board[1] = computerSymbol;
@@ -111,26 +104,6 @@ int turnOfCorner = 0;
 					board[9] = computerSymbol;
 				} else
 					turnOfCorner = 3;
-<<<<<<< HEAD
-=======
-			}
-
-			if (turnOfCorner == 3) {
-				if (board[5] == ' ') {
-					board[5] = computerSymbol;
-				} else
-					turnOfCorner = 4;
-			}
-
-			if (turnOfCorner == 4) {
-
-				int computerPosition = new Random().nextInt(9) + 1;
-				if (board[computerPosition] == ' ') {
-					board[computerPosition] = computerSymbol;
-				} else {
-					computerMove();
-				}
->>>>>>> tic_tac_toe_game_uc13
 			}
 
 			if (turnOfCorner == 3) {
@@ -149,14 +122,21 @@ int turnOfCorner = 0;
 					computerMove();
 				}
 			}
+
 			showBoard(board);
 
 			if (findWinner(computerSymbol)) {
 				System.out.println("Computer won the game");
+				System.out.println("\nNew game starts...\n");
+				board = startGame();
+				randomStart();
 			}
 
 			if (!isTie()) {
 				System.out.println("There is no more move");
+				System.out.println("\nNew game starts...\n");
+				board = startGame();
+				randomStart();
 			}
 
 		}
