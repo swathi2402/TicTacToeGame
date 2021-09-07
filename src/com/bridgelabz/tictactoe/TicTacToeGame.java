@@ -11,13 +11,6 @@ public class TicTacToeGame {
 	static char computerSymbol;
 	static int winningStates[][] = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 }, { 1, 4, 7 }, { 2, 5, 8 }, { 3, 6, 9 },
 			{ 1, 5, 9 }, { 3, 5, 7 } };
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
->>>>>>> tic_tac_toe_game_uc10
-=======
->>>>>>> tic_tac_toe_game_uc11
 
 	private static char[] startGame() {
 		char[] ticTacBoard = new char[10];
@@ -49,34 +42,18 @@ public class TicTacToeGame {
 		showBoard(board);
 
 		if (findWinner(playerSymbol)) {
-<<<<<<< HEAD
 			System.out.println("You won the game");
 		}
 
 		if (!isTie()) {
 			System.out.println("There is no more move");
-=======
-			System.out.println("You won the game");			
-		}
-
-		if (!isTie()) {
-			System.out.println("There is no more move");	
->>>>>>> tic_tac_toe_game_uc8
 		}
 	}
 
 	private static void computerMove() {
 		if (isTie()) {
-<<<<<<< HEAD
-			int turnOfCorner = 0;
-<<<<<<< HEAD
-=======
-			
->>>>>>> tic_tac_toe_game_uc10
-=======
 int turnOfCorner = 0;
 			
->>>>>>> tic_tac_toe_game_uc11
 			int combinationOfThreeItems[][] = { { 0, 1, 2 }, { 1, 0, 2 }, { 1, 2, 0 } };
 			if (turnOfCorner == 0) {
 				for (int state = 0; state < winningStates.length; state++) {
@@ -121,14 +98,6 @@ int turnOfCorner = 0;
 					board[9] = computerSymbol;
 				} else
 					turnOfCorner = 3;
-<<<<<<< HEAD
-			}
-
-			if (turnOfCorner == 3) {
-
-<<<<<<< HEAD
-			if (turnOfCorner == 2) {
-=======
 			}
 
 			if (turnOfCorner == 3) {
@@ -139,10 +108,7 @@ int turnOfCorner = 0;
 			}
 
 			if (turnOfCorner == 4) {
->>>>>>> tic_tac_toe_game_uc11
 
-=======
->>>>>>> tic_tac_toe_game_uc10
 				int computerPosition = new Random().nextInt(9) + 1;
 				if (board[computerPosition] == ' ') {
 					board[computerPosition] = computerSymbol;
@@ -153,15 +119,7 @@ int turnOfCorner = 0;
 			showBoard(board);
 
 			if (findWinner(computerSymbol)) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-				System.out.println("Computer won the game");			
-=======
 				System.out.println("Computer won the game");
->>>>>>> tic_tac_toe_game_uc8
-=======
-				System.out.println("Computer won the game");
->>>>>>> tic_tac_toe_game_uc10
 			}
 
 			if (!isTie()) {
@@ -169,7 +127,6 @@ int turnOfCorner = 0;
 			}
 
 		}
-
 	}
 
 	private static boolean findWinner(char symbol) {
